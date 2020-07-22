@@ -26,6 +26,7 @@ class Posts extends Component {
         return (
             <div>
                 <h1>Posts</h1>
+                {/* use view */}
                 {postData}
             </div>
         )

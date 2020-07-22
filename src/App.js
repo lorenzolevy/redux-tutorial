@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Posts from './components/Posts'
+import Postform from './components/Postform'
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
       </header>
+      <Postform />
       <Posts />
+     
     </div>
   );
 }
