@@ -5,9 +5,15 @@ import { fetchPosts } from '../actions/postActions'
 
 class Posts extends Component {
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         // Take state from state tree and add to props
         this.props.fetchPosts();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.newPost) {
+            this.props.posts.unshift(nextProps.newPost);
+        }
     }
 
     render() {
@@ -32,11 +38,13 @@ class Posts extends Component {
 Posts.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
     posts: PropTypes.array.isRequired,
+    newPost: PropTypes.object
 }
 
 const mapStateToProps = state => ({
     // use what you set in reducer, where the mapping occurs
-    posts: state.posts.items
+    posts: state.posts.items,
+    newPost: state.posts.item
 })
 
 // Redux Specific export using connect
